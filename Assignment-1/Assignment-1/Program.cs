@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BooksLib;
 
-namespace Assignment_1
+namespace App
 {
     class Program
     {

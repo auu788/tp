@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment-1", "Assignment-1\Assignment-1.csproj", "{236C4D82-2297-475A-B28B-9C5418336500}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "Assignment-1\App.csproj", "{236C4D82-2297-475A-B28B-9C5418336500}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksLib", "BooksLib\BooksLib.csproj", "{FEDA0042-CB21-4A74-8E96-5C34354F779E}"
 EndProject
