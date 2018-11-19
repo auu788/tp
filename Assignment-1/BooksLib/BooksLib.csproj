@@ -44,7 +44,6 @@
     <Compile Include="Author.cs" />
     <Compile Include="Book.cs" />
     <Compile Include="BookItem.cs" />
-    <Compile Include="ConstDataFiller.cs" />
     <Compile Include="IDataFiller.cs" />
     <Compile Include="DataRepository.cs" />
     <Compile Include="DataContext.cs" />
