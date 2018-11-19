@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace BooksLib
 {
-    // Wykaz
-    public class Reader : IPerson
+    public interface IDataFiller
     {
-        public Reader(string firstName, string lastName) : base(firstName, lastName) { }
+        void Fill(DataContext context);
     }
 }

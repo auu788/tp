@@ -9,5 +9,11 @@ namespace BooksLib
     public class DataRepository
     {
         private DataContext context;
+
+        public DataRepository(IDataFiller dataFiller)
+        {
+            context = new DataContext();
+            dataFiller.Fill(context);
+        }
     }
 }

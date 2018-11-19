@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace BooksLib
 {
-    public abstract class Person
+    public abstract class IPerson
     {
         protected string FirstName;
         protected string LastName;
         public Guid Guid { get; private set; }
 
-        public Person(string firstName, string lastName)
+        public IPerson(string firstName, string lastName)
         {
             this.FirstName = firstName;
             this.LastName = lastName;

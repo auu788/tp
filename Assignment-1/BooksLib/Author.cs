@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BooksLib
 {
-    public class Author : Person
+    public class Author : IPerson
     {
         public Author(string firstName, string lastName) : base(firstName, lastName) { }
 

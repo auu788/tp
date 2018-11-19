@@ -11,9 +11,8 @@ namespace App
     {
         static void Main(string[] args)
         {
-            Author author = new Author("George", "Orwell");
-            Book book = new Book("1984", new List<Author> { author }, "1984-11-123", "Opis książki");
-            Console.WriteLine(book);
+            IDataFiller dataFiller = new ConstDataFiller();
+            DataRepository dataRepository = new DataRepository(dataFiller);
 
             Console.ReadKey();
         }
