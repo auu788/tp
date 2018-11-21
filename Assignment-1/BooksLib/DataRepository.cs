@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,10 @@ namespace BooksLib
     {
         private DataContext context;
 
+        public DataRepository() {
+            context = new DataContext();
+        }
+  
         public DataRepository(IDataFiller dataFiller)
         {
             context = new DataContext();
@@ -17,7 +22,7 @@ namespace BooksLib
         }
 
         // Person
-        public IEnumerable<IPerson> GetAllPeople()
+        public List<IPerson> GetAllPeople()
         {
             return context.personalInfoData;
         }
@@ -71,7 +76,7 @@ namespace BooksLib
         }
 
         // Book Item
-        public IEnumerable<BookItem> GetAllBookItems()
+        public List<BookItem> GetAllBookItems()
         {
             return context.bookPurchaseData;
         }
@@ -99,7 +104,7 @@ namespace BooksLib
         }
 
         // Rental
-        public IEnumerable<Rental> GetAllRentals()
+        public ObservableCollection<Rental> GetAllRentals()
         {
             return context.rentalData;
         }
