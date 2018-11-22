@@ -156,5 +156,89 @@ namespace BooksLibTest
             Dictionary<string, Book> booksAfter = dataRepository.GetAllBooks();
             Assert.AreEqual(1, booksAfter.Count);
         }
+
+        [TestMethod]
+        public void GetAllBooksItemsTest()
+        {
+            DataRepository dataRepository = new DataRepository();
+            Author author = new Author("George", "Orwell");
+            Book book = new Book("1984", new List<Author> { author }, "1984-11-123", "Opis książki");
+            BookItem bookItem = new BookItem(book, DateTime.Today);
+            BookItem bookItem2 = new BookItem(book, DateTime.Today.AddDays(5));
+            dataRepository.AddBookItem(bookItem);
+            dataRepository.AddBookItem(bookItem2);
+
+            List<BookItem> bookItems = dataRepository.GetAllBookItems();
+            Assert.AreEqual(2, bookItems.Count);
+        }
+
+        [TestMethod]
+        public void GetBookItemTest()
+        {
+            DataRepository dataRepository = new DataRepository();
+            Author author = new Author("George", "Orwell");
+            Book book = new Book("1984", new List<Author> { author }, "1984-11-123", "Opis książki");
+            BookItem expectedBookItem = new BookItem(book, DateTime.Today);
+            BookItem bookItem2 = new BookItem(book, DateTime.Today.AddDays(5));
+            dataRepository.AddBookItem(expectedBookItem);
+            dataRepository.AddBookItem(bookItem2);
+
+            BookItem actualBookItem = dataRepository.GetBookItem(expectedBookItem.Guid);
+            Assert.AreEqual(expectedBookItem, actualBookItem);
+        }
+
+        [TestMethod]
+        public void AddBookItemTest()
+        {
+            DataRepository dataRepository = new DataRepository();
+            Author author = new Author("George", "Orwell");
+            Book book = new Book("1984", new List<Author> { author }, "1984-11-123", "Opis książki");
+            BookItem bookItem = new BookItem(book, DateTime.Today);
+
+            Assert.AreEqual(0, dataRepository.GetAllBookItems().Count);
+
+            dataRepository.AddBookItem(bookItem);
+
+            Assert.AreEqual(1, dataRepository.GetAllBookItems().Count);
+        }
+
+        [TestMethod]
+        public void UpdateBookItemTest()
+        {
+            DataRepository dataRepository = new DataRepository();
+            Author author = new Author("George", "Orwell");
+            Book book = new Book("1984", new List<Author> { author }, "1984-11-123", "Opis książki");
+            BookItem bookItemBefore = new BookItem(book, DateTime.Today);
+            dataRepository.AddBookItem(bookItemBefore);
+
+            Assert.AreEqual(String.Format("1984 by George Orwell [{0}] - Desc [{1}]", book.IsbnNumber, bookItemBefore.Guid), bookItemBefore.ToString());
+            Book bookAfter = new Book("1985", new List<Author> { author }, "1984-11-123", "Opis książki");
+            BookItem bookItemAfter = new BookItem(bookAfter, DateTime.Today);
+
+            dataRepository.UpdateBookItem(bookItemBefore.Guid, bookItemAfter);
+            BookItem updatedBookItem = dataRepository.GetBookItem(bookItemBefore.Guid);
+            Assert.AreEqual(1, dataRepository.GetAllBooks().Count);
+            Assert.AreEqual(String.Format("1985 by George Orwell [{0}] - Desc [{1}]", book.IsbnNumber, bookItemBefore.Guid), updatedBookItem.ToString());
+
+        }
+
+        [TestMethod]
+        public void DeleteBookItemTest()
+        {
+            DataRepository dataRepository = new DataRepository();
+            Author author = new Author("George", "Orwell");
+            Book book = new Book("1984", new List<Author> { author }, "1984-11-123", "Opis książki");
+            BookItem bookItem = new BookItem(book, DateTime.Today);
+            BookItem bookItem2 = new BookItem(book, DateTime.Today.AddDays(5));
+            dataRepository.AddBookItem(bookItem);
+            dataRepository.AddBookItem(bookItem2);
+
+            List<BookItem> bookItemsBefore = dataRepository.GetAllBookItems();
+            Assert.AreEqual(2, bookItemsBefore.Count);
+
+            dataRepository.DeleteBookItem(bookItem);
+            List<BookItem> bookItemsAfter = dataRepository.GetAllBookItems();
+            Assert.AreEqual(1, bookItemsAfter.Count);
+        }
     }
 }
