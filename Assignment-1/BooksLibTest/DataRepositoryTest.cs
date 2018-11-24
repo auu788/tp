@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BooksLib;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BooksLibTest
 {
@@ -58,10 +59,12 @@ namespace BooksLibTest
             IPerson personBefore = dataRepository.GetPerson(reader.Guid);
             Assert.AreEqual(String.Format("First Last [{0}]", reader.Guid), personBefore.ToString());
 
-            dataRepository.UpdatePerson(reader.Guid, new Reader("Updated", "Person"));
-            IPerson personAfter = dataRepository.GetPerson(reader.Guid);
+            Reader readerAfter = new Reader("Updated", "Person");
+            dataRepository.UpdatePerson(reader.Guid, readerAfter);
+            IPerson updatedPerson = dataRepository.GetPerson(readerAfter.Guid);
+
             Assert.AreEqual(1, dataRepository.GetAllPeople().Count);
-            Assert.AreEqual(String.Format("Updated Person [{0}]", reader.Guid), personAfter.ToString());
+            Assert.AreEqual(String.Format("Updated Person [{0}]", readerAfter.Guid), updatedPerson.ToString());
         }
 
         [TestMethod]
@@ -135,7 +138,7 @@ namespace BooksLibTest
             dataRepository.UpdateBook(book.IsbnNumber, new Book("Title Updated", new List<Author> { author }, "1234_1", "Desc"));
             Book personAfter = dataRepository.GetBook(book.IsbnNumber);
             Assert.AreEqual(1, dataRepository.GetAllBooks().Count);
-            Assert.AreEqual(String.Format("Title 1 by George Orwell [{0}] - Desc", book.IsbnNumber), personAfter.ToString());
+            Assert.AreEqual(String.Format("Title Updated by George Orwell [{0}] - Desc", book.IsbnNumber), personAfter.ToString());
         }
 
         [TestMethod]
@@ -211,14 +214,14 @@ namespace BooksLibTest
             BookItem bookItemBefore = new BookItem(book, DateTime.Today);
             dataRepository.AddBookItem(bookItemBefore);
 
-            Assert.AreEqual(String.Format("1984 by George Orwell [{0}] - Desc [{1}]", book.IsbnNumber, bookItemBefore.Guid), bookItemBefore.ToString());
+            Assert.AreEqual(String.Format("1984 by George Orwell [{0}] - Opis książki [{1}]", book.IsbnNumber, bookItemBefore.Guid), bookItemBefore.ToString());
             Book bookAfter = new Book("1985", new List<Author> { author }, "1984-11-123", "Opis książki");
             BookItem bookItemAfter = new BookItem(bookAfter, DateTime.Today);
 
             dataRepository.UpdateBookItem(bookItemBefore.Guid, bookItemAfter);
-            BookItem updatedBookItem = dataRepository.GetBookItem(bookItemBefore.Guid);
-            Assert.AreEqual(1, dataRepository.GetAllBooks().Count);
-            Assert.AreEqual(String.Format("1985 by George Orwell [{0}] - Desc [{1}]", book.IsbnNumber, bookItemBefore.Guid), updatedBookItem.ToString());
+            BookItem updatedBookItem = dataRepository.GetBookItem(bookItemAfter.Guid);
+            Assert.AreEqual(1, dataRepository.GetAllBookItems().Count);
+            Assert.AreEqual(String.Format("1985 by George Orwell [{0}] - Opis książki [{1}]", book.IsbnNumber, bookItemAfter.Guid), updatedBookItem.ToString());
 
         }
 
@@ -239,6 +242,107 @@ namespace BooksLibTest
             dataRepository.DeleteBookItem(bookItem);
             List<BookItem> bookItemsAfter = dataRepository.GetAllBookItems();
             Assert.AreEqual(1, bookItemsAfter.Count);
+        }
+
+        [TestMethod]
+        public void GetAllRentalsTest()
+        {
+            DataRepository dataRepository = new DataRepository();
+            Author author = new Author("George", "Orwell");
+            Book book = new Book("1984", new List<Author> { author }, "1984-11-123", "Opis książki");
+            BookItem bookItem = new BookItem(book, DateTime.Today);
+            BookItem bookItem2 = new BookItem(book, DateTime.Today.AddDays(5));
+            Reader reader = new Reader("Jerzy", "Kopiec");
+            Rental rental = new Rental(reader, bookItem);
+            Rental rental2 = new Rental(reader, bookItem2);
+
+            dataRepository.AddRental(rental);
+            dataRepository.AddRental(rental2);
+
+            ObservableCollection<Rental> rentals = dataRepository.GetAllRentals();
+            Assert.AreEqual(2, rentals.Count);
+        }
+
+        [TestMethod]
+        public void GetRentalTest()
+        {
+            DataRepository dataRepository = new DataRepository();
+            Author author = new Author("George", "Orwell");
+            Book book = new Book("1984", new List<Author> { author }, "1984-11-123", "Opis książki");
+            BookItem bookItem = new BookItem(book, DateTime.Today);
+            BookItem bookItem2 = new BookItem(book, DateTime.Today.AddDays(5));
+            Reader reader = new Reader("Jerzy", "Kopiec");
+            Rental expectedRental = new Rental(reader, bookItem);
+            Rental rental2 = new Rental(reader, bookItem2);
+
+            dataRepository.AddRental(expectedRental);
+            dataRepository.AddRental(rental2);
+
+            Rental actualRental = dataRepository.GetRental(expectedRental.Guid);
+            Assert.AreEqual(expectedRental, actualRental);
+        }
+
+        [TestMethod]
+        public void AddRentalTest()
+        {
+            DataRepository dataRepository = new DataRepository();
+            Author author = new Author("George", "Orwell");
+            Book book = new Book("1984", new List<Author> { author }, "1984-11-123", "Opis książki");
+            BookItem bookItem = new BookItem(book, DateTime.Today);
+            Reader reader = new Reader("Jerzy", "Kopiec");
+            Rental rental = new Rental(reader, bookItem);
+
+            Assert.AreEqual(0, dataRepository.GetAllRentals().Count);
+
+            dataRepository.AddRental(rental);
+
+            Assert.AreEqual(1, dataRepository.GetAllRentals().Count);
+        }
+
+        [TestMethod]
+        public void UpdateRentalTest()
+        {
+            DataRepository dataRepository = new DataRepository();
+            Author author = new Author("George", "Orwell");
+            Book book = new Book("1984", new List<Author> { author }, "1984-11-123", "Opis książki");
+            BookItem bookItem = new BookItem(book, DateTime.Today);
+            Reader reader = new Reader("Jerzy", "Kopiec");
+            Rental rentalBefore = new Rental(reader, bookItem);
+            dataRepository.AddRental(rentalBefore);
+
+            Author author2 = new Author("Grzegorz", "Brzęczyszczykiewicz");
+            Book book2 = new Book("1984", new List<Author> { author2 }, "1984-11-123", "Opis książki");
+            BookItem bookItem2 = new BookItem(book2, DateTime.Today);
+            Reader reader2 = new Reader("Jerzy", "Kopiec");
+            Rental rentalAfter = new Rental(reader2, bookItem2);
+            dataRepository.UpdateRental(rentalBefore.Guid, rentalAfter);
+
+            Rental updatedRental = dataRepository.GetRental(rentalAfter.Guid);
+            Assert.AreEqual(1, dataRepository.GetAllRentals().Count);
+            Assert.IsTrue(updatedRental.ToString().Contains("Grzegorz Brzęczyszczykiewicz"));
+        }
+
+        [TestMethod]
+        public void DeleteRentalTest()
+        {
+            DataRepository dataRepository = new DataRepository();
+            Author author = new Author("George", "Orwell");
+            Book book = new Book("1984", new List<Author> { author }, "1984-11-123", "Opis książki");
+            BookItem bookItem = new BookItem(book, DateTime.Today);
+            BookItem bookItem2 = new BookItem(book, DateTime.Today.AddDays(5));
+            Reader reader = new Reader("Jerzy", "Kopiec");
+            Rental rental = new Rental(reader, bookItem);
+            Rental rental2 = new Rental(reader, bookItem2);
+
+            dataRepository.AddRental(rental);
+            dataRepository.AddRental(rental2);
+
+            ObservableCollection<Rental> rentalsBefore = dataRepository.GetAllRentals();
+            Assert.AreEqual(2, rentalsBefore.Count);
+
+            dataRepository.DeleteRental(rental);
+            ObservableCollection<Rental> rentalsAfter = dataRepository.GetAllRentals();
+            Assert.AreEqual(1, rentalsAfter.Count);
         }
     }
 }

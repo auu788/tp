@@ -20,7 +20,7 @@ namespace BooksLib
             this.Reader = reader;
             this.BookItem = bookItem;
             this.RentalDateStart = DateTime.Now;
-            this.Guid = new Guid();
+            this.Guid = Guid.NewGuid();
         }
 
         public Rental(Reader reader, BookItem bookItem, DateTime rentalDateStart, DateTime rentalDateEnd)

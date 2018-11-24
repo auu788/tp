@@ -39,9 +39,9 @@ namespace BooksLib
 
         public void UpdatePerson(Guid guid, IPerson person)
         {
-            context.personalInfoData.Insert(
-                context.personalInfoData.FindIndex(p => p.Guid == guid),
-                person);
+            int index = context.personalInfoData.FindIndex(bi => bi.Guid == guid);
+            if (index > -1)
+                context.personalInfoData[index] = person;
         }
 
         public void DeletePerson(IPerson person)
@@ -93,9 +93,9 @@ namespace BooksLib
 
         public void UpdateBookItem(Guid guid, BookItem bookItem)
         {
-            context.bookPurchaseData.Insert(
-                context.bookPurchaseData.FindIndex(bi => bi.Guid == guid),
-                bookItem);
+            int index = context.bookPurchaseData.FindIndex(bi => bi.Guid == guid);
+            if (index > -1)
+                context.bookPurchaseData[index] = bookItem;
         }
 
         public void DeleteBookItem(BookItem bookItem)
@@ -111,19 +111,23 @@ namespace BooksLib
 
         public Rental GetRental(Guid guid)
         {
-            return context.rentalData.Single(r => r.Guid == guid);
+            return context.rentalData.SingleOrDefault(r => r.Guid == guid);
         }
 
-        public void AddBookItem(Rental rental)
+        public void AddRental(Rental rental)
         {
             context.rentalData.Add(rental);
         }
 
         public void UpdateRental(Guid guid, Rental rental)
         {
-            context.rentalData.Insert(
-                context.rentalData.IndexOf(
-                    context.rentalData.Single(r => r.Guid == guid)), rental);
+            Rental rentalToUpdate = context.rentalData.SingleOrDefault(r => r.Guid == guid);
+
+            if (rentalToUpdate != null)
+            {
+                int index = context.rentalData.IndexOf(rentalToUpdate);
+                context.rentalData[index] = rental;
+            }
         }
 
         public void DeleteRental(Rental rental)
