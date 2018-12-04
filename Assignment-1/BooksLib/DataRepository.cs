@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -133,6 +134,21 @@ namespace BooksLib
         public void DeleteRental(Rental rental)
         {
             context.rentalData.Remove(rental);
+        }
+
+        private void CollectionChangedMethod(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+
+                Rental newRental = e.NewItems[0] as Rental;
+                Console.WriteLine("Nowe wypozyczenie: " + newRental);
+            }
+            else if (e.Action == NotifyCollectionChangedAction.Remove)
+            {
+                Rental newRental = e.OldItems[0] as Rental;
+                Console.WriteLine("Anulowano wypozyczenie: " + newRental);
+            }
         }
     }
 }

@@ -8,8 +8,8 @@ namespace BooksLib
 {
     public abstract class IPerson
     {
-        protected string FirstName;
-        protected string LastName;
+        public string FirstName { get; protected set; }
+        public string LastName { get; protected set; }
         public Guid Guid { get; private set; }
 
         public IPerson(string firstName, string lastName)

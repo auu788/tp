@@ -9,10 +9,10 @@ namespace BooksLib
     // Zdarzenie
     public class Rental
     {
-        private Reader Reader;
-        private BookItem BookItem;
-        private DateTime RentalDateStart;
-        private DateTime RentalDateEnd;
+        public Reader Reader { get; private set; }
+        public BookItem BookItem { get; private set; }
+        public DateTime RentalDateStart;
+        public DateTime RentalDateEnd;
         public Guid Guid { get; private set; }
 
         public Rental(Reader reader, BookItem bookItem)

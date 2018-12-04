@@ -10,7 +10,7 @@ namespace BooksLib
     public class Book
     {
         private string Title;
-        private List<Author> Authors;
+        public List<Author> Authors { get; private set; }
         private string Description;
         public string IsbnNumber { get; private set; }
 
