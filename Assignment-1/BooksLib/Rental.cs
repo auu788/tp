@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace BooksLib
         public DateTime RentalDateEnd;
         public Guid Guid { get; private set; }
 
+        [JsonConstructor]
         public Rental(Reader reader, BookItem bookItem)
         {
             this.Reader = reader;

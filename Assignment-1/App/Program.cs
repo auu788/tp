@@ -11,7 +11,7 @@ namespace App
     {
         static void Main(string[] args)
         {
-            IDataFiller dataFiller = new ConstDataFiller();
+            IDataFiller dataFiller = new JsonDataFiller();
             DataRepository dataRepository = new DataRepository(dataFiller);
 
             Console.ReadKey();

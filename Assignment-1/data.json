@@ -1,0 +1,161 @@
+{
+	"readers": [
+		{
+			"FirstName": "Katarzyna", 
+			"LastName": "Cicha"
+		},
+		{
+			"FirstName": "Jan", 
+			"LastName": "Fasola"
+		},
+		{
+			"FirstName": "Krzysztof", 
+			"LastName": "Kichy"
+		},
+		{
+			"FirstName": "Robert", 
+			"LastName": "Andrzejczak"
+		}
+	],
+	"books": [
+		{
+			"Title": "1984",
+			"Authors": [
+				{
+					"FirstName": "George",
+					"LastName": "Orwell"
+				}
+			],
+			"IsbnNumber": "1234-1234",
+			"Description": "Opis książki"
+		},
+		{
+			"Title": "Władca Pierścieni: Drużyna Pierścienia",
+			"Authors": [
+				{
+					"FirstName": "John R.R.",
+					"LastName": "Tolkien"
+				}
+			],
+			"IsbnNumber": "1234-1234-1234",
+			"Description": "Opis książki"
+		},
+		{
+			"Title": "Nowy wspaniały świat",
+			"Authors": [
+				{
+					"FirstName": "Aldous",
+					"LastName": "Huxley"
+				}
+			],
+			"IsbnNumber": "1234-1234-1234-1234",
+			"Description": "Opis książki"
+		}
+	],
+	"bookItems": [
+		{
+			"Book": {
+				"Title": "1984",
+				"Authors": [
+					{
+						"FirstName": "George",
+						"LastName": "Orwell"
+					}
+				],
+				"IsbnNumber": "1234-1234",
+				"Description": "Opis książki"
+			},
+			"PurchaseDate": "2018-05-10"
+		},
+		{
+			"Book": 		{
+				"Title": "Władca Pierścieni: Drużyna Pierścienia",
+				"Authors": [
+					{
+						"FirstName": "John R.R.",
+						"LastName": "Tolkien"
+					}
+				],
+				"IsbnNumber": "1234-1234-1234",
+				"Description": "Opis książki"
+			},
+			"PurchaseDate": "2018-09-12"
+		},
+		{
+			"Book": {
+				"Title": "Nowy wspaniały świat",
+				"Authors": [
+					{
+						"FirstName": "Aldous",
+						"LastName": "Huxley"
+					}
+				],
+				"IsbnNumber": "1234-1234-1234-1234",
+				"Description": "Opis książki"
+			},
+			"PurchaseDate": "2017-12-10"
+		},
+	],
+	"rentals": [
+		{
+			"reader": {
+				"FirstName": "Katarzyna", 
+				"LastName": "Cicha"
+			},
+			"bookItem": {
+				"Book": {
+					"Title": "1984",
+					"Authors": [
+						{
+							"FirstName": "George",
+							"LastName": "Orwell"
+						}
+					],
+					"IsbnNumber": "1234-1234",
+					"Description": "Opis książki"
+				},
+				"PurchaseDate": "2018-05-10"
+			}
+		},
+		{
+			"reader": 		{
+				"FirstName": "Jan", 
+				"LastName": "Fasola"
+			},
+			"bookItem": 		{
+				"Book": 		{
+					"Title": "Władca Pierścieni: Drużyna Pierścienia",
+					"Authors": [
+						{
+							"FirstName": "John R.R.",
+							"LastName": "Tolkien"
+						}
+					],
+					"IsbnNumber": "1234-1234-1234",
+					"Description": "Opis książki"
+				},
+				"PurchaseDate": "2018-09-12"
+			}
+		},
+		{
+			"reader": 		{
+				"FirstName": "Krzysztof", 
+				"LastName": "Kichy"
+			},
+			"bookItem": {
+				"Book": {
+					"Title": "Nowy wspaniały świat",
+					"Authors": [
+						{
+							"FirstName": "Aldous",
+							"LastName": "Huxley"
+						}
+					],
+					"IsbnNumber": "1234-1234-1234-1234",
+					"Description": "Opis książki"
+				},
+				"PurchaseDate": "2017-12-10"
+			}
+		}
+	]
+}
