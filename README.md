@@ -1,3 +1,3 @@
 # Programming Technologies (C#)
 
-Paweł Znamiec (204247)
+FTIMS - Paweł Znamiec (204247)
