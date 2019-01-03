@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{3194D81C-5B32-4BFA-A5E2-9A99DB0399B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{F1161F3A-8CB5-4FC7-8CC5-4118D48F612E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3194D81C-5B32-4BFA-A5E2-9A99DB0399B7} = {3194D81C-5B32-4BFA-A5E2-9A99DB0399B7}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +26,10 @@ Global
 		{3194D81C-5B32-4BFA-A5E2-9A99DB0399B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3194D81C-5B32-4BFA-A5E2-9A99DB0399B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3194D81C-5B32-4BFA-A5E2-9A99DB0399B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1161F3A-8CB5-4FC7-8CC5-4118D48F612E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1161F3A-8CB5-4FC7-8CC5-4118D48F612E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1161F3A-8CB5-4FC7-8CC5-4118D48F612E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1161F3A-8CB5-4FC7-8CC5-4118D48F612E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,10 +2,10 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="AdventureWorks">
   <DataContextMoniker Name="/AdventureWorksDataContext" />
   <nestedChildShapes>
-    <classShape Id="2c2b7911-9e51-460f-920f-2a1f455cc98c" absoluteBounds="4, 2, 2, 5.6169254557291657">
+    <classShape Id="2c2b7911-9e51-460f-920f-2a1f455cc98c" absoluteBounds="4.375, 2, 2.375, 5.6169254557291657">
       <DataClassMoniker Name="/AdventureWorksDataContext/Product" />
       <nestedChildShapes>
-        <elementListCompartment Id="a00d8ca1-7a55-4c51-8d57-f6f667eefde8" absoluteBounds="4.015, 2.46, 1.9700000000000002, 5.0569254557291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="a00d8ca1-7a55-4c51-8d57-f6f667eefde8" absoluteBounds="4.39, 2.46, 2.3449999999999998, 5.0569254557291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="c61ebd33-1f97-4cbb-a22a-d933aca7cf37" absoluteBounds="7.625, 3.875, 2, 2.3478011067708335">
@@ -14,7 +14,7 @@
         <elementListCompartment Id="4f8b4608-203d-4087-bfce-7266f05e1ce3" absoluteBounds="7.6400000000000006, 4.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6 : 5.04890055338542); (7.625 : 5.04890055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(6.75 : 5.04890055338542); (7.625 : 5.04890055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/AdventureWorksDataContext/Product/Product_ProductReview" />
       <nodes>
         <classShapeMoniker Id="2c2b7911-9e51-460f-920f-2a1f455cc98c" />

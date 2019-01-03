@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GUI
+namespace GUI.Views
 {
     /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
+    /// Logika interakcji dla klasy ReviewsList.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ReviewsList : UserControl
     {
-        public MainWindow()
+        public ReviewsList()
         {
             InitializeComponent();
         }
