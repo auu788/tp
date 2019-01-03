@@ -5,8 +5,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="200" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ListView HorizontalAlignment="Stretch">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Product Id" Width="100"/>
+                        <GridViewColumn Header="Name" Width="400"/>
+                        <GridViewColumn Header="List Price" Width="150" />
+                        <GridViewColumn Header="Weight" Width="150" />
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">
+            <Button x:Name="addReview" Content="Dodaj recenzję" Height="25" Width="100" Margin="10" />
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -55,12 +55,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="ViewModels\ProductCommands\AddProductCommand.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="Views\AddProduct.xaml.cs">
+      <DependentUpon>AddProduct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProductsList.xaml.cs">
       <DependentUpon>ProductsList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ReviewsList.xaml.cs">
       <DependentUpon>ReviewsList.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\AddProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -109,8 +119,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="ViewModels\" />
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{3194d81c-5b32-4bfa-a5e2-9a99db0399b7}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <Project>{f1161f3a-8cb5-4fc7-8cc5-4118d48f612e}</Project>
+      <Name>Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

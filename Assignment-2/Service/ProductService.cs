@@ -7,21 +7,14 @@ using System.Threading.Tasks;
 
 namespace Service
 {
-    class ProductService
+    public class ProductService
     {
         private AdventureWorksDataContext db = new AdventureWorksDataContext();
 
-        public void CreateProduct(string name, string productNumber, decimal listPrice, decimal weight)
+        public void CreateProduct(Product product)
         {
-            Product product = new Product()
-            {
-                Name = name,
-                ProductNumber = productNumber,
-                ListPrice = listPrice,
-                Weight = weight,
-                rowguid = Guid.NewGuid(),
-                ModifiedDate = DateTime.Now
-            };
+            product.rowguid = Guid.NewGuid();
+            product.ModifiedDate = DateTime.Now;
 
             db.Product.InsertOnSubmit(product);
             db.SubmitChanges();
@@ -36,16 +29,16 @@ namespace Service
 
         }
 
-        public void UpdateProductById(int id, string name, string productNumber, decimal listPrice, decimal weight)
+        public void UpdateProductById(Product product)
         {
             Product productToUpdate = (from p in db.Product
-                                       where p.ProductID.Equals(id)
+                                       where p.ProductID.Equals(product.ProductID)
                                        select p).First();
 
-            productToUpdate.Name = name;
-            productToUpdate.ProductNumber = productNumber;
-            productToUpdate.ListPrice = listPrice;
-            productToUpdate.Weight = weight;
+            productToUpdate.Name = product.Name;
+            productToUpdate.ProductNumber = product.ProductNumber;
+            productToUpdate.ListPrice = product.ListPrice;
+            productToUpdate.Weight = product.Weight;
 
             db.SubmitChanges();
         }

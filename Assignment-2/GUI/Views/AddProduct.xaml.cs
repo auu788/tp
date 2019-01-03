@@ -1,5 +1,4 @@
-﻿using GUI.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,20 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace GUI.Views
 {
     /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
+    /// Logika interakcji dla klasy AddProduct.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddProduct : Window
     {
-        public MainWindow()
+        public AddProduct()
         {
             InitializeComponent();
-            this.DataContext = new ProductViewModel();
+        }
+
+        private void ClickButton(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
