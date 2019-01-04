@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +31,6 @@ namespace GUI.Views
             AddProduct addProductWindow = new AddProduct();
             addProductWindow.DataContext = this.DataContext;
             addProductWindow.Show();
-            Console.WriteLine("Dodano produkt");
         }
 
         private void EditProduct(object sender, RoutedEventArgs e)

@@ -23,8 +23,8 @@ namespace GUI.Views
     {
         public MainWindow()
         {
-            InitializeComponent();
             this.DataContext = new ProductViewModel();
+            InitializeComponent();
         }
     }
 }

@@ -14,7 +14,10 @@ namespace Service
         public void CreateProduct(Product product)
         {
             product.rowguid = Guid.NewGuid();
+            product.SafetyStockLevel = 123;
+            product.ReorderPoint = 123;
             product.ModifiedDate = DateTime.Now;
+            product.SellStartDate = DateTime.Now;
 
             db.Product.InsertOnSubmit(product);
             db.SubmitChanges();
@@ -26,7 +29,6 @@ namespace Service
                                       select p).ToList<Product>();
 
             return products;
-
         }
 
         public void UpdateProductById(Product product)

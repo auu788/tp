@@ -24,7 +24,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ContentControl ContentTemplate="{StaticResource ProductsList}" Grid.Column="0" Grid.Row="0" />
+        <ContentControl ContentTemplate="{StaticResource ProductsList}" Content="{Binding}" Grid.Column="0" Grid.Row="0" />
         <Separator Grid.Column="0" Grid.Row="1"/>
         <ContentControl ContentTemplate="{StaticResource ReviewsList}" Grid.Column="0" Grid.Row="2" />
     </Grid>

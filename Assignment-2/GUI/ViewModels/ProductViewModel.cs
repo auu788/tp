@@ -15,16 +15,15 @@ namespace GUI.ViewModels
     public class ProductViewModel : INotifyPropertyChanged
     {
         public ProductModel ProductModel { get; private set; }
-
         public AddProductCommand AddProductCommand { get; set; }
-
         public Product AddedProduct { get; set; }
 
         public ProductViewModel()
         {
-            Console.WriteLine("AAAAA");
-            AddProductCommand = new AddProductCommand(this);
-            AddedProduct = new Product();
+            this.ProductModel = new ProductModel();
+            this.AddProductCommand = new AddProductCommand(this);
+            this.AddedProduct = new Product();
+            Products = new ObservableCollection<Product>(ProductModel.Products);
         }
 
         private ObservableCollection<Product> products;
@@ -37,7 +36,7 @@ namespace GUI.ViewModels
             set
             {
                 products = value;
-                OnPropertyChanged("Products");
+                //OnPropertyChanged("Products");
             }
         }
 
@@ -59,18 +58,14 @@ namespace GUI.ViewModels
         {
             try
             {
-                Console.WriteLine("ASDFasf");
-
                 ProductModel.AddProduct(AddedProduct);
                 Products = new ObservableCollection<Product>(ProductModel.Products);
                 AddedProduct = new Product();
                 SelectedProduct = Products.Last();
-                Console.WriteLine("ASDFasdfd: " + AddedProduct);
-
             }
-            catch (System.Data.SqlClient.SqlException)
+            catch (System.Data.SqlClient.SqlException e)
             {
-                MessageBox.Show("Dodanie nowego produktu nie powiodło się", "Błąd dodawania");
+                MessageBox.Show("Dodanie nowego produktu nie powiodło się: " + e.Message, "Błąd dodawania");
             }
         }
 

@@ -3,15 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GUI.Views"
         mc:Ignorable="d"
-        Title="AddProduct" Height="250" Width="300">
+        Title="AddProduct" Height="250" Width="300"
+        xmlns:vm="clr-namespace:GUI.ViewModels">
+
+    <Window.Resources>
+        <vm:ProductViewModel x:Key="productViewModel"/>
+    </Window.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -23,21 +29,22 @@
         <Label Content="Nazwa:" Margin="5" Grid.Row="0" Grid.Column="0"/>
         <Label Content="Cena:" Margin="5" Grid.Row="1" Grid.Column="0"/>
         <Label Content="Ciężar:" Margin="5" Grid.Row="2" Grid.Column="0"/>
+        <Label Content="Numer produktu:" Margin="5" Grid.Row="3" Grid.Column="0"/>
 
-        <TextBox Name="nameText" Margin="5" Grid.Row="0" Grid.Column="1" Width="100">
-            <Binding Path="AddedProduct.Name" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-            </Binding>
+        <TextBox Name="nameText" Margin="5" Grid.Row="0" Grid.Column="1" Width="100"
+                 Text="{Binding AddedProduct.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Source={StaticResource productViewModel}}">
         </TextBox>
-        <TextBox Name="priceText" Margin="5" Grid.Row="1" Grid.Column="1" Width="100">
-            <Binding Path="AddedProduct.ListPrice" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-            </Binding>
+        <TextBox Name="priceText" Margin="5" Grid.Row="1" Grid.Column="1" Width="100"
+                 Text="{Binding AddedProduct.ListPrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Source={StaticResource productViewModel}}">
         </TextBox>
-        <TextBox Name="weightText" Margin="5" Grid.Row="2" Grid.Column="1" Width="100">
-            <Binding Path="AddedProduct.Weight" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-            </Binding>
+        <TextBox Name="weightText" Margin="5" Grid.Row="2" Grid.Column="1" Width="100" 
+                 Text="{Binding AddedProduct.Weight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Source={StaticResource productViewModel}}">
         </TextBox>
-
-        <Button Content="Dodaj" Command="{Binding AddProductCommand}" Margin="15" Grid.Row="7" Grid.Column="0" Width="100" Click="ClickButton"/>
+        <TextBox Name="productNumberText" Margin="5" Grid.Row="3" Grid.Column="1" Width="100" 
+                 Text="{Binding AddedProduct.ProductNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Source={StaticResource productViewModel}}">
+        </TextBox>
+        
+        <Button Content="Dodaj" Margin="15" Grid.Row="7" Grid.Column="0" Width="100" Click="ClickButton" Command="{Binding AddProductCommand, Source={StaticResource productViewModel}}"/>
         <Button Content="Anuluj" Margin="15" Grid.Row="7" Grid.Column="1" Width="100" Click="ClickButton"/>
     </Grid>
 </Window>
