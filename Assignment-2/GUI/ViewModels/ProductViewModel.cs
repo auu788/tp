@@ -16,12 +16,15 @@ namespace GUI.ViewModels
     {
         public ProductModel ProductModel { get; private set; }
         public AddProductCommand AddProductCommand { get; set; }
+        public RemoveProductCommand RemoveProductCommand { get; set; }
         public Product AddedProduct { get; set; }
+        public Product SelectedProduct { get; set; }
 
         public ProductViewModel()
         {
             this.ProductModel = new ProductModel();
             this.AddProductCommand = new AddProductCommand(this);
+            this.RemoveProductCommand = new RemoveProductCommand(this);
             this.AddedProduct = new Product();
             Products = new ObservableCollection<Product>(ProductModel.Products);
         }
@@ -36,21 +39,8 @@ namespace GUI.ViewModels
             set
             {
                 products = value;
-                //OnPropertyChanged("Products");
-            }
-        }
-
-        public Product selectedProduct;
-        public Product SelectedProduct
-        {
-            get
-            {
-                return selectedProduct;
-            }
-
-            set
-            {
-                // TODO
+                Console.WriteLine("ZMIANA");
+                OnPropertyChanged("Products");
             }
         }
 
@@ -61,11 +51,24 @@ namespace GUI.ViewModels
                 ProductModel.AddProduct(AddedProduct);
                 Products = new ObservableCollection<Product>(ProductModel.Products);
                 AddedProduct = new Product();
-                SelectedProduct = Products.Last();
+                //SelectedProduct = Products.Last();
             }
             catch (System.Data.SqlClient.SqlException e)
             {
                 MessageBox.Show("Dodanie nowego produktu nie powiodło się: " + e.Message, "Błąd dodawania");
+            }
+        }
+
+        public void RemoveProduct()
+        {
+            try
+            {
+                ProductModel.DeleteProduct(SelectedProduct);
+                Products = new ObservableCollection<Product>(ProductModel.Products);
+            }
+            catch (System.Data.SqlClient.SqlException e)
+            {
+                MessageBox.Show("Usuwanie produktu nie powiodło się: " + e.Message, "Błąd usuwania");
             }
         }
 

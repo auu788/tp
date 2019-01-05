@@ -38,14 +38,16 @@ namespace GUI.Models
 
         public void UpdateProduct(Product product)
         {
-            productService.UpdateProductById(product);
+            productService.UpdateProduct(product);
             GetAllProducts();
         }
 
-        public void DeleteProduct(int productID)
+        public void DeleteProduct(Product product)
         {
-            productService.DeleteProductById(productID);
+            productService.DeleteProduct(product);
+            Console.WriteLine("USUWANIE");
             GetAllProducts();
+
         }
 
         private void GetAllProducts()

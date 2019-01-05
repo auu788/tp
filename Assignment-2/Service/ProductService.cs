@@ -28,10 +28,11 @@ namespace Service
             List<Product> products = (from p in db.Product
                                       select p).ToList<Product>();
 
+            Console.WriteLine("POBIERANIE WSZYST");
             return products;
         }
 
-        public void UpdateProductById(Product product)
+        public void UpdateProduct(Product product)
         {
             Product productToUpdate = (from p in db.Product
                                        where p.ProductID.Equals(product.ProductID)
@@ -45,11 +46,46 @@ namespace Service
             db.SubmitChanges();
         }
 
-        public void DeleteProductById(int id)
+        public void DeleteProduct(Product product)
         {
             Product productToDelete = (from p in db.Product
-                                       where p.ProductID.Equals(id)
+                                       where p.ProductID.Equals(product.ProductID)
                                        select p).First();
+
+            foreach(TransactionHistory th in productToDelete.TransactionHistory)
+            {
+                db.TransactionHistory.DeleteOnSubmit(th);
+            }
+
+            foreach(BillOfMaterials bom in productToDelete.BillOfMaterials)
+            {
+                db.BillOfMaterials.DeleteOnSubmit(bom);
+            }
+
+            foreach (ProductInventory pi in productToDelete.ProductInventory)
+            {
+                db.ProductInventory.DeleteOnSubmit(pi);
+            }
+
+            foreach (ProductProductPhoto ppp in productToDelete.ProductProductPhoto)
+            {
+                db.ProductProductPhoto.DeleteOnSubmit(ppp);
+            }
+
+            foreach (ProductVendor pv in productToDelete.ProductVendor)
+            {
+                db.ProductVendor.DeleteOnSubmit(pv);
+            }
+
+            foreach (PurchaseOrderDetail pod in productToDelete.PurchaseOrderDetail)
+            {
+                db.PurchaseOrderDetail.DeleteOnSubmit(pod);
+            }
+
+            foreach (WorkOrder wo in productToDelete.WorkOrder)
+            {
+                db.WorkOrder.DeleteOnSubmit(wo);
+            }
 
             db.Product.DeleteOnSubmit(productToDelete);
             db.SubmitChanges();

@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="ViewModels\ProductCommands\AddProductCommand.cs" />
+    <Compile Include="ViewModels\ProductCommands\RemoveProductCommand.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="Views\AddProduct.xaml.cs">
       <DependentUpon>AddProduct.xaml</DependentUpon>

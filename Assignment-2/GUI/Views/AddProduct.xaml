@@ -32,16 +32,16 @@
         <Label Content="Numer produktu:" Margin="5" Grid.Row="3" Grid.Column="0"/>
 
         <TextBox Name="nameText" Margin="5" Grid.Row="0" Grid.Column="1" Width="100"
-                 Text="{Binding AddedProduct.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Source={StaticResource productViewModel}}">
+                 Text="{Binding AddedProduct.Name, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged, Source={StaticResource productViewModel}}">
         </TextBox>
         <TextBox Name="priceText" Margin="5" Grid.Row="1" Grid.Column="1" Width="100"
-                 Text="{Binding AddedProduct.ListPrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Source={StaticResource productViewModel}}">
+                 Text="{Binding AddedProduct.ListPrice, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged, Source={StaticResource productViewModel}}">
         </TextBox>
         <TextBox Name="weightText" Margin="5" Grid.Row="2" Grid.Column="1" Width="100" 
-                 Text="{Binding AddedProduct.Weight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Source={StaticResource productViewModel}}">
+                 Text="{Binding AddedProduct.Weight, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged, Source={StaticResource productViewModel}}">
         </TextBox>
         <TextBox Name="productNumberText" Margin="5" Grid.Row="3" Grid.Column="1" Width="100" 
-                 Text="{Binding AddedProduct.ProductNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Source={StaticResource productViewModel}}">
+                 Text="{Binding AddedProduct.ProductNumber, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged, Source={StaticResource productViewModel}}">
         </TextBox>
         
         <Button Content="Dodaj" Margin="15" Grid.Row="7" Grid.Column="0" Width="100" Click="ClickButton" Command="{Binding AddProductCommand, Source={StaticResource productViewModel}}"/>

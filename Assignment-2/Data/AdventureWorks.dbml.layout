@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="AdventureWorks">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 12.25" name="AdventureWorks">
   <DataContextMoniker Name="/AdventureWorksDataContext" />
   <nestedChildShapes>
     <classShape Id="2c2b7911-9e51-460f-920f-2a1f455cc98c" absoluteBounds="4.375, 2, 2.375, 5.6169254557291657">
@@ -19,6 +19,104 @@
       <nodes>
         <classShapeMoniker Id="2c2b7911-9e51-460f-920f-2a1f455cc98c" />
         <classShapeMoniker Id="c61ebd33-1f97-4cbb-a22a-d933aca7cf37" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="34e589da-3dd8-4c5e-ae41-0d6e42e42acd" absoluteBounds="7.75, 0.5, 2, 2.5401025390625">
+      <DataClassMoniker Name="/AdventureWorksDataContext/TransactionHistory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="31f4d4a8-646b-46e5-83be-d77bccbc1512" absoluteBounds="7.7650000000000006, 0.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.75 : 2.52005126953125); (7.75 : 2.52005126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AdventureWorksDataContext/Product/Product_TransactionHistory" />
+      <nodes>
+        <classShapeMoniker Id="2c2b7911-9e51-460f-920f-2a1f455cc98c" />
+        <classShapeMoniker Id="34e589da-3dd8-4c5e-ae41-0d6e42e42acd" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="2a8ee97d-e4fb-4d57-830c-494e85a9c61a" absoluteBounds="1.5, 0.875, 2, 2.5401025390625">
+      <DataClassMoniker Name="/AdventureWorksDataContext/BillOfMaterials" />
+      <nestedChildShapes>
+        <elementListCompartment Id="127bd37a-4a87-4fcf-b60c-eaa6218e5c60" absoluteBounds="1.5149999999999997, 1.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.375 : 2.70755126953125); (3.5 : 2.70755126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AdventureWorksDataContext/Product/Product_BillOfMaterials" />
+      <nodes>
+        <classShapeMoniker Id="2c2b7911-9e51-460f-920f-2a1f455cc98c" />
+        <classShapeMoniker Id="2a8ee97d-e4fb-4d57-830c-494e85a9c61a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.375 : 2.29127563476563); (3.5 : 2.29127563476563)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AdventureWorksDataContext/Product/Product_BillOfMaterials1" />
+      <nodes>
+        <classShapeMoniker Id="2c2b7911-9e51-460f-920f-2a1f455cc98c" />
+        <classShapeMoniker Id="2a8ee97d-e4fb-4d57-830c-494e85a9c61a" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="f9eaa541-7907-4eff-a291-20528301375e" absoluteBounds="1.375, 4.125, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/AdventureWorksDataContext/ProductInventory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b01b6c88-aeb9-4acc-9651-02b72cc335d3" absoluteBounds="1.3899999999999997, 4.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.375 : 5.20274983723958); (3.375 : 5.20274983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AdventureWorksDataContext/Product/Product_ProductInventory" />
+      <nodes>
+        <classShapeMoniker Id="2c2b7911-9e51-460f-920f-2a1f455cc98c" />
+        <classShapeMoniker Id="f9eaa541-7907-4eff-a291-20528301375e" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="4aa0167b-8034-445b-9601-8101364d9f4c" absoluteBounds="1.5, 6.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/AdventureWorksDataContext/ProductProductPhoto" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1cb0d917-b1ee-4236-a561-93c55aed41f5" absoluteBounds="1.5150000000000001, 7.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.375 : 7.18346272786458); (3.5 : 7.18346272786458)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AdventureWorksDataContext/Product/Product_ProductProductPhoto" />
+      <nodes>
+        <classShapeMoniker Id="2c2b7911-9e51-460f-920f-2a1f455cc98c" />
+        <classShapeMoniker Id="4aa0167b-8034-445b-9601-8101364d9f4c" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="5161d948-e187-4587-beed-2c9c9bab1fc4" absoluteBounds="7.625, 7, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/AdventureWorksDataContext/ProductVendor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="19fa63dd-ade0-497a-9464-4308e65999e5" absoluteBounds="7.6400000000000006, 7.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.75 : 7.30846272786458); (7.625 : 7.30846272786458)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AdventureWorksDataContext/Product/Product_ProductVendor" />
+      <nodes>
+        <classShapeMoniker Id="2c2b7911-9e51-460f-920f-2a1f455cc98c" />
+        <classShapeMoniker Id="5161d948-e187-4587-beed-2c9c9bab1fc4" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="09fa87a1-b289-4ee8-81a8-b3c52face5af" absoluteBounds="4.625, 9.125, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/AdventureWorksDataContext/PurchaseOrderDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ca53aa75-ea4a-445a-bd8c-cc34f8728a2a" absoluteBounds="4.64, 9.585, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.625 : 7.61692545572917); (5.625 : 9.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AdventureWorksDataContext/Product/Product_PurchaseOrderDetail" />
+      <nodes>
+        <classShapeMoniker Id="2c2b7911-9e51-460f-920f-2a1f455cc98c" />
+        <classShapeMoniker Id="09fa87a1-b289-4ee8-81a8-b3c52face5af" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="ae8610b7-cca9-4e89-a69c-d51cfe5138a4" absoluteBounds="1.75, 8.875, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/AdventureWorksDataContext/WorkOrder" />
+      <nestedChildShapes>
+        <elementListCompartment Id="33880a91-6c5d-4b3d-b4b3-f832b2ab32e7" absoluteBounds="1.7650000000000001, 9.335, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.46875 : 7.61692545572917); (4.46875 : 8.96875); (3.75 : 8.96875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/AdventureWorksDataContext/Product/Product_WorkOrder" />
+      <nodes>
+        <classShapeMoniker Id="2c2b7911-9e51-460f-920f-2a1f455cc98c" />
+        <classShapeMoniker Id="ae8610b7-cca9-4e89-a69c-d51cfe5138a4" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

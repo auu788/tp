@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI.Views"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             Name="ProductsListUserControl"
              d:DesignHeight="250" d:DesignWidth="800">
 
     <Grid>
@@ -13,15 +14,15 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ListView ItemsSource="{Binding Products}">
+        <ListView ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}" Name="lst">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="Id produktu" Width="100" DisplayMemberBinding="{Binding ProductNumber}"/>
-                        <GridViewColumn Header="Nazwa" Width="400" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="Cena" Width="100" DisplayMemberBinding="{Binding ListPrice}" />
-                        <GridViewColumn Header="Waga" Width="100" DisplayMemberBinding="{Binding Weight}" />
-                        <GridViewColumn Header="Edytuj" Width="45">
+                        <GridViewColumn Header="Id produktu" Width="90" DisplayMemberBinding="{Binding ProductNumber}"/>
+                        <GridViewColumn Header="Nazwa" Width="390" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Cena" Width="90" DisplayMemberBinding="{Binding ListPrice}" />
+                        <GridViewColumn Header="Waga" Width="90" DisplayMemberBinding="{Binding Weight}" />
+                        <GridViewColumn Header="Edytuj" Width="50">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button
@@ -32,13 +33,13 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Usuń" Width="40">
+                        <GridViewColumn Header="Usuń" Width="50">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button
                                         Content="Usuń"
                                         Margin="0"
-                                        Click="RemoveProduct"
+                                        Command="{Binding DataContext.RemoveProductCommand, ElementName=lst}"
                                         VerticalAlignment="Center" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
@@ -47,9 +48,10 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
+        
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">
             <Button x:Name="addProduct" Content="Dodaj produkt" Click="AddProduct" Height="25" Width="100" Margin="10" />
+            <Button x:Name="removeProduct" Content="Usuń produkt" Command="{Binding RemoveProductCommand}" Click="RemoveProduct" Height="25" Width="100" Margin="10" />
         </StackPanel>
     </Grid>
 </UserControl>

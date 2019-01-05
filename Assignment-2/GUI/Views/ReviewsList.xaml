@@ -12,7 +12,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ListView HorizontalAlignment="Stretch">
+        <ListView Grid.Column="0" Grid.Row="0">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
