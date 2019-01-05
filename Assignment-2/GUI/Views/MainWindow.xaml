@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:GUI"
         xmlns:v="clr-namespace:GUI.Views"
         xmlns:controls="GUI.Views"
+        xmlns:local1="clr-namespace:GUI.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 
@@ -15,9 +16,9 @@
             <RowDefinition Height="10" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-
+          
         <v:ProductsList Grid.Column="0" Grid.Row="0"/>
         <Separator Grid.Column="0" Grid.Row="1"/>
-        <v:ReviewsList Grid.Column="0" Grid.Row="2"/>
+        <v:ReviewsList DataContext="{Binding ProductReviewViewModel}" Grid.Column="0" Grid.Row="2"/>
     </Grid>
 </Window>

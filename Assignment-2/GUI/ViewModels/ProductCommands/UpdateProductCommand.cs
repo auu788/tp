@@ -7,12 +7,12 @@ using System.Windows.Input;
 
 namespace GUI.ViewModels.ProductCommands
 {
-    public class AddProductCommand : ICommand
+    public class UpdateProductCommand : ICommand
     {
         public ProductViewModel ProductViewModel { get; set; }
         public event EventHandler CanExecuteChanged;
 
-        public AddProductCommand(ProductViewModel productViewModel)
+        public UpdateProductCommand(ProductViewModel productViewModel)
         {
             ProductViewModel = productViewModel;
         }
@@ -24,7 +24,7 @@ namespace GUI.ViewModels.ProductCommands
 
         public void Execute(object parameter)
         {
-            ProductViewModel.AddProduct();
+            ProductViewModel.UpdateProduct();
         }
     }
 }

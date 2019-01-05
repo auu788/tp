@@ -56,11 +56,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\ProductReviewModel.cs" />
     <Compile Include="ViewModels\ProductCommands\AddProductCommand.cs" />
+    <Compile Include="ViewModels\ProductCommands\UpdateProductCommand.cs" />
     <Compile Include="ViewModels\ProductCommands\RemoveProductCommand.cs" />
+    <Compile Include="ViewModels\ProductReviewCommands\AddProductReviewCommand.cs" />
+    <Compile Include="ViewModels\ProductReviewViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="Views\AddProduct.xaml.cs">
       <DependentUpon>AddProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditProduct.xaml.cs">
+      <DependentUpon>EditProduct.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProductsList.xaml.cs">
       <DependentUpon>ProductsList.xaml</DependentUpon>
@@ -69,6 +76,10 @@
       <DependentUpon>ReviewsList.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\AddProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

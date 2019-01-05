@@ -5,16 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace GUI.ViewModels.ProductCommands
+namespace GUI.ViewModels.ProductReviewCommands
 {
-    public class AddProductCommand : ICommand
+    public class AddProductReviewCommand : ICommand
     {
-        public ProductViewModel ProductViewModel { get; set; }
+        public ProductReviewViewModel ProductReviewViewModel { get; set; }
         public event EventHandler CanExecuteChanged;
 
-        public AddProductCommand(ProductViewModel productViewModel)
+        public AddProductReviewCommand(ProductReviewViewModel productViewModel)
         {
-            ProductViewModel = productViewModel;
+            ProductReviewViewModel = productViewModel;
         }
 
         public bool CanExecute(object parameter)
@@ -24,7 +24,7 @@ namespace GUI.ViewModels.ProductCommands
 
         public void Execute(object parameter)
         {
-            ProductViewModel.AddProduct();
+            ProductReviewViewModel.AddReview();
         }
     }
 }

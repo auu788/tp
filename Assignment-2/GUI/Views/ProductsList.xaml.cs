@@ -35,7 +35,9 @@ namespace GUI.Views
 
         private void EditProduct(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Edytowano produkt");
+            EditProduct addProductWindow = new EditProduct();
+            addProductWindow.DataContext = this.DataContext;
+            addProductWindow.Show();
         }
 
         private void RemoveProduct(object sender, RoutedEventArgs e)

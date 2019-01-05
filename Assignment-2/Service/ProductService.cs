@@ -26,9 +26,10 @@ namespace Service
         public List<Product> GetAllProducts()
         {
             List<Product> products = (from p in db.Product
+                                      where p.ProductReview.Count > 0
+                                      orderby p.ProductNumber
                                       select p).ToList<Product>();
 
-            Console.WriteLine("POBIERANIE WSZYST");
             return products;
         }
 

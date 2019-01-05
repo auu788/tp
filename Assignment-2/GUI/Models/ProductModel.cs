@@ -45,9 +45,7 @@ namespace GUI.Models
         public void DeleteProduct(Product product)
         {
             productService.DeleteProduct(product);
-            Console.WriteLine("USUWANIE");
             GetAllProducts();
-
         }
 
         private void GetAllProducts()

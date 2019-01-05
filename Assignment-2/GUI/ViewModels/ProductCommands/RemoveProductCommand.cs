@@ -14,19 +14,16 @@ namespace GUI.ViewModels.ProductCommands
 
         public RemoveProductCommand(ProductViewModel productViewModel)
         {
-            Console.WriteLine("RemoveProduct");
             ProductViewModel = productViewModel;
         }
 
         public bool CanExecute(object parameter)
         {
-            Console.WriteLine("can");
             return true;
         }
 
         public void Execute(object parameter)
         {
-            Console.WriteLine("REMOVE");
             ProductViewModel.RemoveProduct();
         }
     }

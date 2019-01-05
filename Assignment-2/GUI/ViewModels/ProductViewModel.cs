@@ -14,19 +14,39 @@ namespace GUI.ViewModels
 {
     public class ProductViewModel : INotifyPropertyChanged
     {
+        public ProductReviewViewModel ProductReviewViewModel  { get; set; }
         public ProductModel ProductModel { get; private set; }
         public AddProductCommand AddProductCommand { get; set; }
+        public UpdateProductCommand EditProductCommand { get; set; }
         public RemoveProductCommand RemoveProductCommand { get; set; }
         public Product AddedProduct { get; set; }
-        public Product SelectedProduct { get; set; }
+        public Product UpdatedProduct { get; set; }
+        private Product _selectedProduct;
+        public Product SelectedProduct {
+            get
+            {
+                return _selectedProduct;
+            }
+            set
+            {
+                _selectedProduct = value;
+                this.ProductReviewViewModel.RefreshReviews(value);
+                OnPropertyChanged("SelectedProduct");
+                Console.WriteLine("REVIEWS: " + ProductReviewViewModel.Reviews.Count);
+            }
+        }
 
         public ProductViewModel()
         {
+
             this.ProductModel = new ProductModel();
             this.AddProductCommand = new AddProductCommand(this);
+            this.EditProductCommand = new UpdateProductCommand(this);
             this.RemoveProductCommand = new RemoveProductCommand(this);
             this.AddedProduct = new Product();
             Products = new ObservableCollection<Product>(ProductModel.Products);
+            this.ProductReviewViewModel = new ProductReviewViewModel(Products.First());
+            //this.SelectedProduct = Products.First();
         }
 
         private ObservableCollection<Product> products;
@@ -39,7 +59,6 @@ namespace GUI.ViewModels
             set
             {
                 products = value;
-                Console.WriteLine("ZMIANA");
                 OnPropertyChanged("Products");
             }
         }
@@ -51,11 +70,25 @@ namespace GUI.ViewModels
                 ProductModel.AddProduct(AddedProduct);
                 Products = new ObservableCollection<Product>(ProductModel.Products);
                 AddedProduct = new Product();
-                //SelectedProduct = Products.Last();
+                SelectedProduct = Products.Last();
             }
             catch (System.Data.SqlClient.SqlException e)
             {
                 MessageBox.Show("Dodanie nowego produktu nie powiodło się: " + e.Message, "Błąd dodawania");
+            }
+        }
+
+        public void UpdateProduct()
+        {
+            try
+            {
+                ProductModel.UpdateProduct(SelectedProduct);
+                Products = new ObservableCollection<Product>(ProductModel.Products);
+                //SelectedProduct = Products.First();
+            }
+            catch (System.Data.SqlClient.SqlException e)
+            {
+                MessageBox.Show("Edycja produktu nie powiodła się: " + e.Message, "Błąd edycji");
             }
         }
 
