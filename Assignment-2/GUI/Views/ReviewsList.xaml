@@ -13,21 +13,27 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="300" />
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
-
         <ListView Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Reviews}" SelectedItem="{Binding SelectedReview}">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="Ocena" Width="100" DisplayMemberBinding="{Binding Rating}"/>
-                        <GridViewColumn Header="Komentarz" Width="400" DisplayMemberBinding="{Binding Comments}"/>
+                        <GridViewColumn Header="Ocena" Width="50" DisplayMemberBinding="{Binding Rating}"/>
+                        <GridViewColumn Header="Komentarz" Width="705">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                        <ScrollViewer VerticalScrollBarVisibility="Auto" Height="100">
+                                        <TextBox Margin="1" TextWrapping="Wrap" Width="680" IsReadOnly="True" Text="{Binding Comments}"/>
+                                        </ScrollViewer>
+                                    </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
-
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">
             <Button x:Name="addReview" Content="Dodaj recenzję" Height="25" Width="100" Margin="10" />
         </StackPanel>
