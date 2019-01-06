@@ -1,0 +1,40 @@
+﻿<Window x:Class="GUI.Views.AddReview"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI.Views"
+        mc:Ignorable="d"
+        Title="AddReview" Height="160" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label Content="Ocena:" Margin="5" Grid.Row="0" Grid.Column="0"/>
+        <Label Content="Komentarz:" Margin="5" Grid.Row="1" Grid.Column="0"/>
+
+        <ComboBox Name="nameText" Margin="5" Grid.Row="0" Grid.Column="1" Width="100" SelectedIndex="0"
+                  Text="{Binding AddedReview.Rating, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}">
+            <ComboBoxItem>1</ComboBoxItem>
+            <ComboBoxItem>2</ComboBoxItem>
+            <ComboBoxItem>3</ComboBoxItem>
+            <ComboBoxItem>4</ComboBoxItem>
+            <ComboBoxItem>5</ComboBoxItem>
+        </ComboBox>
+
+        <TextBox Name="priceText" Margin="5" Grid.Row="1" Grid.Column="1" Width="100"
+                 Text="{Binding AddedReview.Comments, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}">
+        </TextBox>
+
+        <Button Content="Dodaj" Margin="15" Grid.Row="7" Grid.Column="0" Width="100" Click="ClickButton" Command="{Binding AddProductReviewCommand}"/>
+        <Button Content="Anuluj" Margin="15" Grid.Row="7" Grid.Column="1" Width="100" Click="ClickButton" />
+    </Grid>
+</Window>

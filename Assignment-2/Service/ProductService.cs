@@ -26,7 +26,6 @@ namespace Service
         public List<Product> GetAllProducts()
         {
             List<Product> products = (from p in db.Product
-                                      where p.ProductReview.Count > 0
                                       orderby p.ProductNumber
                                       select p).ToList<Product>();
 
@@ -86,6 +85,11 @@ namespace Service
             foreach (WorkOrder wo in productToDelete.WorkOrder)
             {
                 db.WorkOrder.DeleteOnSubmit(wo);
+            }
+
+            foreach (ProductReview pr in productToDelete.ProductReview)
+            {
+                db.ProductReview.DeleteOnSubmit(pr);
             }
 
             db.Product.DeleteOnSubmit(productToDelete);

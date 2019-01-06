@@ -41,7 +41,10 @@ namespace GUI.Models
             set
             {
                 _product = value;
-                GetReviews();
+                if (_product !=  null)
+                {
+                    GetReviews();
+                }
             }
         }
 
@@ -51,19 +54,20 @@ namespace GUI.Models
             GetReviews();
         }
 
-        public void AddProduct(ProductReview review)
+        public void AddReview(ProductReview review)
         {
+            review.ProductID = Product.ProductID;
             productReviewService.CreateReview(review);
             GetReviews();
         }
 
-        public void UpdateProduct(ProductReview review)
+        public void UpdateReview(ProductReview review)
         {
             productReviewService.UpdateReview(review);
             GetReviews();
         }
 
-        public void DeleteProduct(ProductReview review)
+        public void DeleteReview(ProductReview review)
         {
             productReviewService.DeleteReview(review);
             GetReviews();

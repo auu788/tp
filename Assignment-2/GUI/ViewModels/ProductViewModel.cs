@@ -30,8 +30,11 @@ namespace GUI.ViewModels
             set
             {
                 _selectedProduct = value;
-                this.ProductReviewViewModel.RefreshReviews(value);
-                SetUpdatedProduct();
+                if (_selectedProduct != null)
+                {
+                    this.ProductReviewViewModel.RefreshReviews(value);
+                    SetUpdatedProduct();
+                }
                 OnPropertyChanged("SelectedProduct");
             }
         }
@@ -109,6 +112,7 @@ namespace GUI.ViewModels
             {
                 ProductModel.DeleteProduct(SelectedProduct);
                 Products = new ObservableCollection<Product>(ProductModel.Products);
+                SelectedProduct = Products.First();
             }
             catch (System.Data.SqlClient.SqlException e)
             {

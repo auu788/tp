@@ -28,13 +28,18 @@ namespace Service
                                                   where p.ProductID.Equals(productId)
                                                   select p).ToList<ProductReview>();
 
+            if (productReviews == null)
+            {
+                return new List<ProductReview>();
+            }
+
             return productReviews;
         }
 
         public void UpdateReview(ProductReview review)
         {
             ProductReview reviewToUpdate = (from p in db.ProductReview
-                                             where p.ProductID.Equals(review.ProductID)
+                                             where p.ProductReviewID.Equals(review.ProductReviewID)
                                        select p).First();
 
             reviewToUpdate.Rating = review.Rating;

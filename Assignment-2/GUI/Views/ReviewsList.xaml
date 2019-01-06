@@ -24,7 +24,7 @@
                         <GridViewColumn Header="Komentarz" Width="705">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                        <ScrollViewer VerticalScrollBarVisibility="Auto" Height="50">
+                                        <ScrollViewer VerticalScrollBarVisibility="Auto" Height="60">
                                         <TextBox Margin="1" TextWrapping="Wrap" Width="680" IsReadOnly="True" Text="{Binding Comments}"/>
                                         </ScrollViewer>
                                     </DataTemplate>
@@ -35,7 +35,9 @@
             </ListView.View>
         </ListView>
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">
-            <Button x:Name="addReview" Content="Dodaj recenzję" Height="25" Width="100" Margin="10" />
+            <Button x:Name="addReview" Content="Dodaj recenzję" Click="AddReview_Click" Height="25" Width="100" Margin="10" />
+            <Button x:Name="editProduct" Content="Edytuj recenzję" Click="EditReview_Click" Height="25" Width="100" Margin="10" />
+            <Button x:Name="removeProduct" Content="Usuń recenzję" Command="{Binding RemoveProductReviewCommand}" Height="25" Width="100" Margin="10" />
         </StackPanel>
     </Grid>
 </UserControl>

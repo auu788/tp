@@ -61,13 +61,21 @@
     <Compile Include="ViewModels\ProductCommands\UpdateProductCommand.cs" />
     <Compile Include="ViewModels\ProductCommands\RemoveProductCommand.cs" />
     <Compile Include="ViewModels\ProductReviewCommands\AddProductReviewCommand.cs" />
+    <Compile Include="ViewModels\ProductReviewCommands\RemoveProductReviewCommand.cs" />
+    <Compile Include="ViewModels\ProductReviewCommands\UpdateProductReviewCommand.cs" />
     <Compile Include="ViewModels\ProductReviewViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="Views\AddProduct.xaml.cs">
       <DependentUpon>AddProduct.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddReview.xaml.cs">
+      <DependentUpon>AddReview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditProduct.xaml.cs">
       <DependentUpon>EditProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditReview.xaml.cs">
+      <DependentUpon>EditReview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProductsList.xaml.cs">
       <DependentUpon>ProductsList.xaml</DependentUpon>
@@ -79,7 +87,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AddReview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EditProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditReview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

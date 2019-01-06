@@ -24,5 +24,19 @@ namespace GUI.Views
         {
             InitializeComponent();
         }
+
+        private void AddReview_Click(object sender, RoutedEventArgs e)
+        {
+            AddReview addReviewWindow = new AddReview();
+            addReviewWindow.DataContext = this.DataContext;
+            addReviewWindow.Show();
+        }
+
+        private void EditReview_Click(object sender, RoutedEventArgs e)
+        {
+            EditReview editReviewWindow = new EditReview();
+            editReviewWindow.DataContext = this.DataContext;
+            editReviewWindow.Show();
+        }
     }
 }

@@ -26,23 +26,18 @@ namespace GUI.Views
             InitializeComponent();
         }
 
-        private void AddProduct(object sender, RoutedEventArgs e)
+        private void AddProduct_Click(object sender, RoutedEventArgs e)
         {
             AddProduct addProductWindow = new AddProduct();
             addProductWindow.DataContext = this.DataContext;
             addProductWindow.Show();
         }
 
-        private void EditProduct(object sender, RoutedEventArgs e)
+        private void EditProduct_Click(object sender, RoutedEventArgs e)
         {
             EditProduct editProductWindow = new EditProduct();
             editProductWindow.DataContext = this.DataContext;
             editProductWindow.Show();
-        }
-
-        private void RemoveProduct(object sender, RoutedEventArgs e)
-        {
-            Console.WriteLine("Usunięto produkt");
         }
     }
 }
