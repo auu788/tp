@@ -35,9 +35,9 @@
             </ListView.View>
         </ListView>
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">
-            <Button x:Name="addReview" Content="Dodaj recenzję" Click="AddReview_Click" Height="25" Width="100" Margin="10" />
-            <Button x:Name="editProduct" Content="Edytuj recenzję" Click="EditReview_Click" Height="25" Width="100" Margin="10" />
-            <Button x:Name="removeProduct" Content="Usuń recenzję" Command="{Binding RemoveProductReviewCommand}" Height="25" Width="100" Margin="10" />
+            <Button x:Name="addReview" Content="Dodaj recenzję" Click="AddReview_Click" Height="25" Width="100" Margin="10"  />
+            <Button x:Name="editProduct" Content="Edytuj recenzję" Click="EditReview_Click" Height="25" Width="100" Margin="10" IsEnabled="{Binding IsButtonEnabled}" />
+            <Button x:Name="removeProduct" Content="Usuń recenzję" Command="{Binding RemoveProductReviewCommand}" Height="25" Width="100" Margin="10" IsEnabled="{Binding IsButtonEnabled}" />
         </StackPanel>
     </Grid>
 </UserControl>

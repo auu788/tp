@@ -20,37 +20,19 @@
                     <GridView.Columns>
                         <GridViewColumn Header="Id produktu" Width="90" DisplayMemberBinding="{Binding ProductNumber}"/>
                         <GridViewColumn Header="Nazwa" Width="390" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="Cena" Width="90" DisplayMemberBinding="{Binding ListPrice}" />
+                        <GridViewColumn Header="Cena" Width="90" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ListPrice, StringFormat='{}{0:C}'}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                         <GridViewColumn Header="Waga" Width="90" DisplayMemberBinding="{Binding Weight}" />
-                        <GridViewColumn Header="Edytuj" Width="50">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button
-                                        Content="Edytuj"
-                                        Margin="0"
-                                        VerticalAlignment="Center"
-                                        Click="EditProduct_Click" />  
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Usuń" Width="50">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button
-                                        Content="Usuń"
-                                        Margin="0"
-                                        Command="{Binding DataContext.RemoveProductCommand, ElementName=lst}"
-                                        VerticalAlignment="Center" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">
-            <TextBox Text="{Binding SelectedProduct.Name, UpdateSourceTrigger=PropertyChanged}" Height="25" Width="100"/>
-
             <Button x:Name="addProduct" Content="Dodaj produkt" Click="AddProduct_Click" Height="25" Width="100" Margin="10" />
             <Button x:Name="editProduct" Content="Edytuj produkt" Click="EditProduct_Click" Height="25" Width="100" Margin="10" />
             <Button x:Name="removeProduct" Content="Usuń produkt" Command="{Binding RemoveProductCommand}" Height="25" Width="100" Margin="10" />

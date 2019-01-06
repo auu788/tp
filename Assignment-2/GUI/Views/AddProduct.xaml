@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="AddProduct" Height="250" Width="300"
-        xmlns:vm="clr-namespace:GUI.ViewModels">
+        xmlns:vm="clr-namespace:GUI.ViewModels"
+        xmlns:r="clr-namespace:GUI.ViewModels.ValidationRules">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -27,20 +28,53 @@
         <Label Content="Ciężar:" Margin="5" Grid.Row="2" Grid.Column="0"/>
         <Label Content="Numer produktu:" Margin="5" Grid.Row="3" Grid.Column="0"/>
 
-        <TextBox Name="nameText" Margin="5" Grid.Row="0" Grid.Column="1" Width="100"
-                 Text="{Binding AddedProduct.Name, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}">
+        <TextBox Name="nameText" Margin="5" Grid.Row="0" Grid.Column="1" Width="100">
+            <Binding Path="AddedProduct.Name" Mode="OneWayToSource" UpdateSourceTrigger="PropertyChanged">
+                <Binding.ValidationRules>
+                    <r:ProductNameValidationRule/>
+                </Binding.ValidationRules>
+            </Binding>
         </TextBox>
-        <TextBox Name="priceText" Margin="5" Grid.Row="1" Grid.Column="1" Width="100"
-                 Text="{Binding AddedProduct.ListPrice, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}">
+        <TextBox Name="priceText" Margin="5" Grid.Row="1" Grid.Column="1" Width="100">
+            <Binding Path="AddedProduct.ListPrice" Mode="OneWayToSource" UpdateSourceTrigger="PropertyChanged">
+                <Binding.ValidationRules>
+                    <r:DecimalValidationRule/>
+                </Binding.ValidationRules>
+            </Binding>
         </TextBox>
-        <TextBox Name="weightText" Margin="5" Grid.Row="2" Grid.Column="1" Width="100" 
-                 Text="{Binding AddedProduct.Weight, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}">
+        <TextBox Name="weightText" Margin="5" Grid.Row="2" Grid.Column="1" Width="100">
+            <Binding Path="AddedProduct.Weight" Mode="OneWayToSource" UpdateSourceTrigger="PropertyChanged">
+                <Binding.ValidationRules>
+                    <r:DecimalValidationRule/>
+                </Binding.ValidationRules>
+            </Binding>
         </TextBox>
-        <TextBox Name="productNumberText" Margin="5" Grid.Row="3" Grid.Column="1" Width="100" 
-                 Text="{Binding AddedProduct.ProductNumber, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}">
+        <TextBox Name="productNumberText" Margin="5" Grid.Row="3" Grid.Column="1" Width="100">
+            <Binding Path="AddedProduct.ProductNumber" Mode="OneWayToSource" UpdateSourceTrigger="PropertyChanged">
+                <Binding.ValidationRules>
+                    <r:ProductNumberValidationRule/>
+                </Binding.ValidationRules>
+            </Binding>
         </TextBox>
-        
-        <Button Content="Dodaj" Margin="15" Grid.Row="7" Grid.Column="0" Width="100" Click="ClickButton" Command="{Binding AddProductCommand}"/>
+
+        <Button Content="Dodaj" Margin="15" Grid.Row="7" Grid.Column="0" Width="100" Click="ClickButton" Command="{Binding AddProductCommand}">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=nameText}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=priceText}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=weightText}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=productNumberText}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
         <Button Content="Anuluj" Margin="15" Grid.Row="7" Grid.Column="1" Width="100" Click="ClickButton"/>
     </Grid>
 </Window>

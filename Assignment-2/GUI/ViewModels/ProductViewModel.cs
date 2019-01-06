@@ -88,7 +88,6 @@ namespace GUI.ViewModels
             {
                 ProductModel.UpdateProduct(UpdatedProduct);
                 Products = new ObservableCollection<Product>(ProductModel.Products);
-                //SelectedProduct = Products.First();
             }
             catch (System.Data.SqlClient.SqlException e)
             {

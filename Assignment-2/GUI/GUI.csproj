@@ -65,6 +65,10 @@
     <Compile Include="ViewModels\ProductReviewCommands\UpdateProductReviewCommand.cs" />
     <Compile Include="ViewModels\ProductReviewViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\ValidationRules\DecimalValidationRule.cs" />
+    <Compile Include="ViewModels\ValidationRules\ProductNameValidationRule.cs" />
+    <Compile Include="ViewModels\ValidationRules\ProductNumberValidationRule.cs" />
+    <Compile Include="ViewModels\ValidationRules\ReviewCommentValidationRule.cs" />
     <Compile Include="Views\AddProduct.xaml.cs">
       <DependentUpon>AddProduct.xaml</DependentUpon>
     </Compile>

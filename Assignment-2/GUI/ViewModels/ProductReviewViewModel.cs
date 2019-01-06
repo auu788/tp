@@ -19,6 +19,7 @@ namespace GUI.ViewModels
         public UpdateProductReviewCommand UpdateProductReviewCommand { get; set; }
         public RemoveProductReviewCommand RemoveProductReviewCommand { get; set; }
         public ProductReview AddedReview { get; set; }
+        public Boolean IsButtonEnabled { get; set; }
 
         public ProductReviewViewModel() { }
 
@@ -85,6 +86,7 @@ namespace GUI.ViewModels
         {
             this.ProductReviewModel.Product = selectedProduct;
             Reviews = new ObservableCollection<ProductReview>(ProductReviewModel.ProductReviews);
+            RefreshButtonAvailability();
         }
 
         public void AddReview()
@@ -95,6 +97,7 @@ namespace GUI.ViewModels
                 Reviews = new ObservableCollection<ProductReview>(ProductReviewModel.ProductReviews);
                 SelectedReview = Reviews.Last();
                 AddedReview = new ProductReview();
+                RefreshButtonAvailability();
             }
             catch (System.Data.SqlClient.SqlException e)
             {
@@ -121,6 +124,7 @@ namespace GUI.ViewModels
             {
                 ProductReviewModel.DeleteReview(SelectedReview);
                 Reviews = new ObservableCollection<ProductReview>(ProductReviewModel.ProductReviews);
+                RefreshButtonAvailability();
             }
             catch (System.Data.SqlClient.SqlException e)
             {
@@ -134,6 +138,20 @@ namespace GUI.ViewModels
             UpdatedReview.ProductReviewID = SelectedReview.ProductReviewID;
             UpdatedReview.Rating = SelectedReview.Rating;
             UpdatedReview.Comments = SelectedReview.Comments;
+        }
+
+        private void RefreshButtonAvailability()
+        {
+            if (Reviews.Count > 0)
+            {
+                IsButtonEnabled = true;
+            } else
+            {
+                IsButtonEnabled = false;
+            }
+
+            OnPropertyChanged("IsButtonEnabled");
+          
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
