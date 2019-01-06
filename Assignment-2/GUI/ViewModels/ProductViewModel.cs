@@ -31,14 +31,14 @@ namespace GUI.ViewModels
             {
                 _selectedProduct = value;
                 this.ProductReviewViewModel.RefreshReviews(value);
+                SetUpdatedProduct();
                 OnPropertyChanged("SelectedProduct");
-                Console.WriteLine("REVIEWS: " + ProductReviewViewModel.Reviews.Count);
             }
         }
 
         public ProductViewModel()
         {
-
+            Console.WriteLine("ProductViewModel");
             this.ProductModel = new ProductModel();
             this.AddProductCommand = new AddProductCommand(this);
             this.EditProductCommand = new UpdateProductCommand(this);
@@ -46,7 +46,8 @@ namespace GUI.ViewModels
             this.AddedProduct = new Product();
             Products = new ObservableCollection<Product>(ProductModel.Products);
             this.ProductReviewViewModel = new ProductReviewViewModel(Products.First());
-            //this.SelectedProduct = Products.First();
+            this.SelectedProduct = Products.First();
+            SetUpdatedProduct();
         }
 
         private ObservableCollection<Product> products;
@@ -82,7 +83,7 @@ namespace GUI.ViewModels
         {
             try
             {
-                ProductModel.UpdateProduct(SelectedProduct);
+                ProductModel.UpdateProduct(UpdatedProduct);
                 Products = new ObservableCollection<Product>(ProductModel.Products);
                 //SelectedProduct = Products.First();
             }
@@ -90,6 +91,16 @@ namespace GUI.ViewModels
             {
                 MessageBox.Show("Edycja produktu nie powiodła się: " + e.Message, "Błąd edycji");
             }
+        }
+
+        private void SetUpdatedProduct()
+        {
+            UpdatedProduct = new Product();
+            UpdatedProduct.ProductID = SelectedProduct.ProductID;
+            UpdatedProduct.Name = SelectedProduct.Name;
+            UpdatedProduct.ListPrice = SelectedProduct.ListPrice;
+            UpdatedProduct.Weight = SelectedProduct.Weight;
+            UpdatedProduct.ProductNumber = SelectedProduct.ProductNumber;
         }
 
         public void RemoveProduct()

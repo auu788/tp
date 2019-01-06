@@ -7,9 +7,6 @@
         xmlns:vm="clr-namespace:GUI.ViewModels"
         mc:Ignorable="d"
         Title="EditProduct" Height="250" Width="300">
-    <Window.Resources>
-        <vm:ProductViewModel x:Key="productViewModel"/>
-    </Window.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -32,19 +29,19 @@
         <Label Content="Numer produktu:" Margin="5" Grid.Row="3" Grid.Column="0"/>
 
         <TextBox Name="nameText" Margin="5" Grid.Row="0" Grid.Column="1" Width="100"
-                 Text="{Binding SelectedProduct.Name, UpdateSourceTrigger=PropertyChanged, Source={StaticResource productViewModel}}">
+                 Text="{Binding UpdatedProduct.Name, UpdateSourceTrigger=PropertyChanged}">
         </TextBox>
         <TextBox Name="priceText" Margin="5" Grid.Row="1" Grid.Column="1" Width="100"
-                 Text="{Binding SelectedProduct.ListPrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Source={StaticResource productViewModel}}">
+                 Text="{Binding UpdatedProduct.ListPrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
         </TextBox>
         <TextBox Name="weightText" Margin="5" Grid.Row="2" Grid.Column="1" Width="100" 
-                 Text="{Binding SelectedProduct.Weight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Source={StaticResource productViewModel}}">
+                 Text="{Binding UpdatedProduct.Weight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
         </TextBox>
         <TextBox Name="productNumberText" Margin="5" Grid.Row="3" Grid.Column="1" Width="100" 
-                 Text="{Binding SelectedProduct.ProductNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Source={StaticResource productViewModel}}">
+                 Text="{Binding UpdatedProduct.ProductNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
         </TextBox>
 
-        <Button Content="Zapisz" Margin="15" Grid.Row="7" Grid.Column="0" Width="100" Click="ClickButton" Command="{Binding EditProductCommand, Source={StaticResource productViewModel}}"/>
+        <Button Content="Zapisz" Margin="15" Grid.Row="7" Grid.Column="0" Width="100" Click="ClickButton" Command="{Binding EditProductCommand}"/>
         <Button Content="Anuluj" Margin="15" Grid.Row="7" Grid.Column="1" Width="100" Click="ClickButton"/>
     </Grid>
 </Window>

@@ -8,13 +8,13 @@
         xmlns:controls="GUI.Views"
         xmlns:local1="clr-namespace:GUI.ViewModels"
         mc:Ignorable="d"
-        Title="Review Manager" Height="650" Width="800" ResizeMode="NoResize">
+        Title="Review Manager" Height="500" Width="800" ResizeMode="NoResize">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="250" />
             <RowDefinition Height="10" />
-            <RowDefinition Height="400" />
+            <RowDefinition Height="250" />
         </Grid.RowDefinitions>
           
         <v:ProductsList Grid.Column="0" Grid.Row="0"/>

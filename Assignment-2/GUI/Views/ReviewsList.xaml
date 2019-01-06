@@ -13,7 +13,7 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="300" />
+            <RowDefinition Height="150" />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         <ListView Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Reviews}" SelectedItem="{Binding SelectedReview}">
@@ -24,7 +24,7 @@
                         <GridViewColumn Header="Komentarz" Width="705">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                        <ScrollViewer VerticalScrollBarVisibility="Auto" Height="100">
+                                        <ScrollViewer VerticalScrollBarVisibility="Auto" Height="50">
                                         <TextBox Margin="1" TextWrapping="Wrap" Width="680" IsReadOnly="True" Text="{Binding Comments}"/>
                                         </ScrollViewer>
                                     </DataTemplate>

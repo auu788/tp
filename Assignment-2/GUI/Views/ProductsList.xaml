@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ListView ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}" Name="lst">
+        <ListView ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" SelectionMode="Single" Name="lst">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
